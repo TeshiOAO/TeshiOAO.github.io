@@ -102,4 +102,4 @@ For manual deployment using the gh-pages package:
 - The `base: '/bib/'` setting in `vite.config.js` ensures proper asset paths
 - Content is loaded from `public/profolio/profolio.md` - update this file to modify portfolio content
 - The deployment process builds the project and uploads to the `gh-pages` branch
-- GitHub Actions workflow is configured with proper token authentication for automated deployment
+- GitHub Actions workflow is configured with PAGE_TOKEN for automated deployment
