@@ -35,6 +35,11 @@ React project with Vite build system is fully set up and functional. All core co
 - `npm run lint` - Run ESLint for code quality
 - `npm run test` - Run Vitest tests
 
+## Deployment Commands
+
+- `npm run deploy` - Deploy to GitHub Pages (manual deployment)
+- `npm run predeploy` - Build before deployment (runs automatically)
+
 ## Project Structure
 
 ```
@@ -67,3 +72,33 @@ All content is centralized in `src/data/content.js` for easy editing. Update the
 - ESLint code quality checks
 - Vitest testing framework
 - Modern CSS with Flexbox/Grid layouts
+
+## GitHub Pages Deployment
+
+This project is configured for easy deployment to GitHub Pages with two deployment methods:
+
+### Automatic Deployment (Recommended)
+
+The project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically:
+- Builds the project when changes are pushed to the main branch
+- Deploys to GitHub Pages
+- Updates the live site at `https://[username].github.io/bib/`
+
+**Setup Steps:**
+1. Push your code to a GitHub repository
+2. Go to repository Settings > Pages
+3. Set Source to "GitHub Actions"
+4. The workflow will automatically trigger on push to main branch
+
+### Manual Deployment
+
+For manual deployment using the gh-pages package:
+
+1. Install dependencies: `npm install`
+2. Run deployment: `npm run deploy`
+
+**Important Notes:**
+- The site will be available at `https://[username].github.io/bib/`
+- The `base: '/bib/'` setting in `vite.config.js` ensures proper asset paths
+- Content is loaded from `public/profolio/profolio.md` - update this file to modify portfolio content
+- The deployment process builds the project and uploads to the `gh-pages` branch
