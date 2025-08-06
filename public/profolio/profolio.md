@@ -4,8 +4,7 @@ About Me:
 Computer science graduate with 6 years of programming experience and a solid foundation in software development. Skilled in logical thinking, communication, and teamwork, with leadership experience in student organizations. Eager to apply and expand my technical skills in both professional and personal projects.
 
 Contact details:[
-    Email: hankhank135@gmail.com, 
-    telephone: 0909385768,
+    Email: hankhank135@gmail.com
 ]
 
 Language:[

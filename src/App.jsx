@@ -67,24 +67,14 @@ function App() {
               <p className="hero-title">{personal?.title || 'Computer Science Graduate Student'}</p>
               
               {/* Contact Information - Emphasized */}
-              {(contact?.email || contact?.phone) && (
+              {contact?.email && (
                 <div className="hero-contact">
-                  {contact.email && (
-                    <div className="hero-contact-item">
-                      <span className="contact-icon">📧</span>
-                      <a href={`mailto:${contact.email}`} className="hero-contact-link">
-                        {contact.email}
-                      </a>
-                    </div>
-                  )}
-                  {contact.phone && (
-                    <div className="hero-contact-item">
-                      <span className="contact-icon">📱</span>
-                      <a href={`tel:${contact.phone}`} className="hero-contact-link">
-                        {contact.phone}
-                      </a>
-                    </div>
-                  )}
+                  <div className="hero-contact-item">
+                    <span className="contact-icon">📧</span>
+                    <a href={`mailto:${contact.email}`} className="hero-contact-link">
+                      {contact.email}
+                    </a>
+                  </div>
                 </div>
               )}
             </div>

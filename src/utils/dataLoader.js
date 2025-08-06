@@ -12,8 +12,7 @@ export const parsePortfolioData = (markdownContent) => {
       photo: "/profolio/photo.png"
     },
     contact: {
-      email: "",
-      phone: ""
+      email: ""
     },
     languages: [],
     education: [],
@@ -59,8 +58,6 @@ export const parsePortfolioData = (markdownContent) => {
     else if (currentSection === 'contact') {
       if (line.includes('Email:')) {
         data.contact.email = line.replace('Email:', '').replace(',', '').trim();
-      } else if (line.includes('telephone:')) {
-        data.contact.phone = line.replace('telephone:', '').replace(',', '').trim();
       }
     }
     // Parse languages
