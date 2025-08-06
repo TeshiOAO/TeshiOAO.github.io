@@ -18,9 +18,7 @@ jobs:
   # Build and Deploy job
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: https://TeshiOAO.github.io
+    environment: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,10 +39,11 @@ jobs:
         
       - name: Configure Git for deployment
         run: |
-          git config --global user.name "github-actions[bot]"
+          git config --global user.name "github-actions"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
         
       - name: Deploy to GitHub Pages
-        run: npx gh-pages -d dist -u "github-actions[bot] <github-actions[bot]@users.noreply.github.com>" -r https://x-access-token:${{ secrets.PAGE_TOKEN }}@github.com/${{ github.repository }}.git
+        run: npx gh-pages -d dist -r https://x-access-token:${{ secrets.PAGE_TOKEN }}@github.com/${{ github.repository }}.git
         env:
+          GITHUB_TOKEN: ${{ secrets.PAGE_TOKEN }}
           PAGE_TOKEN: ${{ secrets.PAGE_TOKEN }}
