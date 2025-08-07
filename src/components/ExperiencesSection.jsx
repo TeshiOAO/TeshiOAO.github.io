@@ -28,16 +28,11 @@ const ExperiencesSection = ({ data }) => {
                   </ul>
                 )}
               </div>
-              <div className="experience-picture">
-                {exp.image ? (
+              {exp.image && (
+                <div className="experience-picture">
                   <img src={exp.image} alt={`${exp.title} experience`} />
-                ) : (
-                  <div className="picture-placeholder">
-                    <span>📸</span>
-                    <p>Experience Photo</p>
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         ))}
