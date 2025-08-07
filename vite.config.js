@@ -11,9 +11,16 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: undefined,
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
       }
     }
+  },
+  esbuild: {
+    jsx: 'automatic',
+    target: 'es2020'
   },
   test: {
     environment: 'jsdom'
