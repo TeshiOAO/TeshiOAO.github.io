@@ -31,6 +31,7 @@ Special Experience:[
         organization: "IEEE Pacific Visualization Conference",
         period: "04/2025",
         description: "Presented research findings at the IEEE Pacific Visualization Conference 2025 Scientific Visualization Workshop, sharing insights on advanced visualization techniques and AI applications.",
+        image: "/profolio/lecture_square.jpg",
         highlights: [
             "Scientific Visualization",
             "Artificial Intelligence",
