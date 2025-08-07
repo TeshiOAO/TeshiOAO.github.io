@@ -25,7 +25,12 @@ Double-click `serve-local.bat` to start a Python server
 
 ## Why Can't I Open index.html Directly?
 
-Modern browsers block ES modules loaded via `file://` protocol for security reasons. The production build uses ES modules (`<script type="module">`), so it requires a web server to function properly.
+Modern browsers block ES modules loaded via `file://` protocol for security reasons (CORS policy). The production build uses ES modules (`<script type="module">`), so it requires a web server to function properly.
+
+**Error you might see:**
+```
+Access to script at 'file:///path/to/index-xxx.js' from origin 'null' has been blocked by CORS policy
+```
 
 ## Troubleshooting
 
