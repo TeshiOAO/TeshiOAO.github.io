@@ -45,14 +45,26 @@ export const parsePortfolioData = (markdownContent) => {
       i = j - 1; // Skip processed lines
     } else if (line.startsWith('Contact details:[')) {
       currentSection = 'contact';
+      currentObject = {}; // Reset current object
     } else if (line.startsWith('Language:[')) {
       currentSection = 'languages';
+      currentObject = {}; // Reset current object
     } else if (line.startsWith('Education:[')) {
       currentSection = 'education';
+      currentObject = {}; // Reset current object
     } else if (line.startsWith('Special Experience:[')) {
       currentSection = 'experiences';
+      currentObject = {}; // Reset current object
     } else if (line.startsWith('Project Experience:[')) {
+      // Add any pending experience before switching sections
+      if (currentSection === 'experiences' && Object.keys(currentObject).length > 0) {
+        data.experiences.push({
+          id: data.experiences.length + 1,
+          ...currentObject
+        });
+      }
       currentSection = 'projects';
+      currentObject = {}; // Reset current object
     } 
     // Parse contact information
     else if (currentSection === 'contact') {
@@ -104,6 +116,8 @@ export const parsePortfolioData = (markdownContent) => {
         currentObject.period = line.replace('period:', '').replace('"', '').replace('"', '').replace(',', '').trim();
       } else if (line.includes('description:')) {
         currentObject.description = line.replace('description:', '').replace('"', '').replace('"', '').replace(',', '').trim();
+      } else if (line.includes('image:')) {
+        currentObject.image = line.replace('image:', '').replace('"', '').replace('"', '').replace(',', '').trim();
       } else if (line.includes('highlights: [')) {
         collectingMultiline = true;
         multilineContent = '';
