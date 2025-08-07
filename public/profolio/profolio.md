@@ -76,7 +76,7 @@ Project Experience:[
     {
         title: "Deep Learning-Assisted Statistical Visualization and Analysis for Distribution-Based Ensemble Scientific Data Summarization (master’s thesis)",
         description: "Develop a neural network model to map distribution samples to spatial locations, enabling high-quality data analysis, visualization, and uncertainty quantification."
-        technologies: ["Python", "Pytorch", "Numpy"],
+        technologies: ["Deep Learning", "Neural Networks", "Data Visualization"],
         period: "2022-2025",
         link: "https://github.com/TeshiOAO/GS-3DNet", // Optional
         highlights: [
