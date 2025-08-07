@@ -44,6 +44,7 @@ jobs:
       - name: Deploy to GitHub Pages
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
-          npx gh-pages -d dist
+          echo "" > dist/.nojekyll
+          npx gh-pages -d dist --dotfiles
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
