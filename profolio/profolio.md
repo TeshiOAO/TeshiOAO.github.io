@@ -27,6 +27,17 @@ Education:[
 
 Special Experience:[
     {
+        title: "Talker of IEEE Pacific Visualization Conference 2025 Scivis Workshop",
+        organization: "IEEE Pacific Visualization Conference",
+        period: "04/2025",
+        description: "Presented research findings at the IEEE Pacific Visualization Conference 2025 Scientific Visualization Workshop, sharing insights on advanced visualization techniques and AI applications.",
+        highlights: [
+            "Scientific Visualization",
+            "Artificial Intelligence",
+            "Conference Presentation"
+        ]
+    },
+    {
         title: "Research Assistant",
         organization: "National Taiwan Normal University",
         period: "02/2025-05/2025",
