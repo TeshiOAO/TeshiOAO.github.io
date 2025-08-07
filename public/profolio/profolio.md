@@ -36,6 +36,17 @@ Special Experience:[
             "Artificial Intelligence"
         ]
     },
+    {
+        title: "Substitute Military Service",
+        organization: "National Fire Agency",
+        period: "05/2025-11/2025",
+        description: "Serving as a substitute military service member at the National Fire Agency, contributing to fire safety and emergency response operations.",
+        highlights: [
+            "Emergency Response",
+            "Public Service",
+            "Fire Safety"
+        ]
+    },
 ]
 
 
