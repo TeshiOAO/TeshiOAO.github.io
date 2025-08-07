@@ -624,6 +624,101 @@ section h2 {
   }
 }
 
+/* Military service section specific styles with picture layout */
+.military-service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.military-service-item {
+  border-left: 3px solid #764ba2;
+  padding-left: 1rem;
+}
+
+.military-service-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.military-service-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.military-service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.military-service-title {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  word-wrap: break-word;
+}
+
+/* Military service picture styles */
+.military-service-picture {
+  flex-shrink: 0;
+  width: 200px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.military-service-picture img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.military-service-picture img:hover {
+  transform: scale(1.02);
+}
+
+.military-service-picture .picture-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #6c757d;
+  border: 2px dashed #dee2e6;
+  transition: background 0.2s ease;
+}
+
+.military-service-picture .picture-placeholder:hover {
+  background: linear-gradient(135deg, #e9ecef, #dee2e6);
+}
+
+.military-service-picture .picture-placeholder span {
+  font-size: 2rem;
+}
+
+.military-service-picture .picture-placeholder p {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}
+
 /* Tablets */
 @media (max-width: 768px) {
   /* Hero section responsive */
@@ -763,9 +858,22 @@ section h2 {
   
   .education-item,
   .experience-item,
+  .military-service-item,
   .project-item {
     padding-left: 0.75rem;
     border-left-width: 2px;
+  }
+  
+  /* Military service mobile layout */
+  .military-service-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .military-service-picture {
+    width: 100%;
+    height: 120px;
+    order: -1;
   }
   
   /* Languages mobile layout */
