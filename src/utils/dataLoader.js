@@ -17,7 +17,6 @@ export const parsePortfolioData = (markdownContent) => {
     languages: [],
     education: [],
     experiences: [],
-    militaryService: [],
     projects: []
   };
 
@@ -52,8 +51,6 @@ export const parsePortfolioData = (markdownContent) => {
       currentSection = 'education';
     } else if (line.startsWith('Special Experience:[')) {
       currentSection = 'experiences';
-    } else if (line.startsWith('Military Service:[')) {
-      currentSection = 'militaryService';
     } else if (line.startsWith('Project Experience:[')) {
       currentSection = 'projects';
     } 
@@ -96,35 +93,6 @@ export const parsePortfolioData = (markdownContent) => {
         if (Object.keys(currentObject).length > 0) {
           data.experiences.push({
             id: data.experiences.length + 1,
-            ...currentObject
-          });
-        }
-        currentObject = {};
-        currentObject.title = line.replace('title:', '').replace('"', '').replace('"', '').replace(',', '').trim();
-      } else if (line.includes('organization:')) {
-        currentObject.organization = line.replace('organization:', '').replace('"', '').replace('"', '').replace(',', '').trim();
-      } else if (line.includes('period:')) {
-        currentObject.period = line.replace('period:', '').replace('"', '').replace('"', '').replace(',', '').trim();
-      } else if (line.includes('description:')) {
-        currentObject.description = line.replace('description:', '').replace('"', '').replace('"', '').replace(',', '').trim();
-      } else if (line.includes('highlights: [')) {
-        collectingMultiline = true;
-        multilineContent = '';
-      } else if (collectingMultiline && line.includes(']')) {
-        collectingMultiline = false;
-        currentObject.highlights = multilineContent.split(',').map(item => 
-          item.replace('"', '').replace('"', '').trim()
-        ).filter(item => item);
-      } else if (collectingMultiline) {
-        multilineContent += line + ',';
-      }
-    }
-    // Parse military service
-    else if (currentSection === 'militaryService') {
-      if (line.includes('title:')) {
-        if (Object.keys(currentObject).length > 0) {
-          data.militaryService.push({
-            id: data.militaryService.length + 1,
             ...currentObject
           });
         }
@@ -200,13 +168,6 @@ export const parsePortfolioData = (markdownContent) => {
   if (currentSection === 'experiences' && Object.keys(currentObject).length > 0) {
     data.experiences.push({
       id: data.experiences.length + 1,
-      ...currentObject
-    });
-  }
-  
-  if (currentSection === 'militaryService' && Object.keys(currentObject).length > 0) {
-    data.militaryService.push({
-      id: data.militaryService.length + 1,
       ...currentObject
     });
   }

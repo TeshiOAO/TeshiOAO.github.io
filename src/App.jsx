@@ -4,7 +4,6 @@ import './App.css'
 import LanguagesSection from './components/LanguagesSection'
 import EducationSection from './components/EducationSection'
 import ExperiencesSection from './components/ExperiencesSection'
-import MilitaryServiceSection from './components/MilitaryServiceSection'
 import ProjectsSection from './components/ProjectsSection'
 import { loadPortfolioData } from './utils/dataLoader'
 
@@ -96,7 +95,6 @@ function App() {
         <LanguagesSection data={portfolioData?.languages} />
         <EducationSection data={portfolioData?.education} />
         <ExperiencesSection data={portfolioData?.experiences} />
-        <MilitaryServiceSection data={portfolioData?.militaryService} />
         <ProjectsSection data={portfolioData?.projects} />
       </main>
     </div>

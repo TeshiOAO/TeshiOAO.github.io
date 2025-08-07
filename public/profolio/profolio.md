@@ -47,9 +47,6 @@ Special Experience:[
             "Artificial Intelligence"
         ]
     },
-]
-
-Military Service:[
     {
         title: "Substitute Military Service",
         organization: "National Fire Agency",
