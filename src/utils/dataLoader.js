@@ -115,7 +115,7 @@ export const parsePortfolioData = (markdownContent) => {
       } else if (line.includes('period:')) {
         currentObject.period = line.replace('period:', '').replace('"', '').replace('"', '').replace(',', '').trim();
       } else if (line.includes('description:')) {
-        currentObject.description = line.replace('description:', '').replace('"', '').replace('"', '').replace(',', '').trim();
+        currentObject.description = line.replace('description:', '').replace('"', '').replace('"', '').replace(/,$/, '').trim();
       } else if (line.includes('image:')) {
         currentObject.image = line.replace('image:', '').replace('"', '').replace('"', '').replace(',', '').trim();
       } else if (line.includes('highlights: [')) {
@@ -127,7 +127,7 @@ export const parsePortfolioData = (markdownContent) => {
           item.replace('"', '').replace('"', '').trim()
         ).filter(item => item);
       } else if (collectingMultiline) {
-        multilineContent += line + ',';
+        multilineContent += line;
       }
     }
     // Parse projects
@@ -142,7 +142,7 @@ export const parsePortfolioData = (markdownContent) => {
         currentObject = {};
         currentObject.title = line.replace('title:', '').replace('"', '').replace('"', '').replace(',', '').trim();
       } else if (line.includes('description:')) {
-        currentObject.description = line.replace('description:', '').replace('"', '').replace('"', '').trim();
+        currentObject.description = line.replace('description:', '').replace('"', '').replace('"', '').replace(/,$/, '').trim();
       } else if (line.includes('technologies:')) {
         const techString = line.replace('technologies:', '').replace('[', '').replace(']', '').replace(',', '').trim();
         currentObject.technologies = techString.split(',').map(tech => tech.replace('"', '').replace('"', '').trim()).filter(tech => tech);
@@ -162,7 +162,7 @@ export const parsePortfolioData = (markdownContent) => {
           item.replace('"', '').replace('"', '').trim()
         ).filter(item => item);
       } else if (collectingMultiline) {
-        multilineContent += line + ',';
+        multilineContent += line;
       }
     }
   }
