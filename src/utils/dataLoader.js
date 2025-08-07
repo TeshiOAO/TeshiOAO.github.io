@@ -53,6 +53,17 @@ export const parsePortfolioData = (markdownContent) => {
       currentSection = 'education';
       currentObject = {}; // Reset current object
     } else if (line.startsWith('Special Experience:[')) {
+      // Add any pending education before switching sections
+      if (currentSection === 'education' && Object.keys(currentObject).length > 0) {
+        data.education.push({
+          id: data.education.length + 1,
+          institution: currentObject.University || '',
+          degree: (currentObject.Degree || '').replace(/,$/, ''),
+          field: 'Computer Science and Information Engineering',
+          period: currentObject.Year || '',
+          description: `${(currentObject.Degree || '').replace(/,$/, '')} from ${currentObject.University}`
+        });
+      }
       currentSection = 'experiences';
       currentObject = {}; // Reset current object
     } else if (line.startsWith('Project Experience:[')) {
@@ -96,7 +107,7 @@ export const parsePortfolioData = (markdownContent) => {
       } else if (line.includes('Year:')) {
         currentObject.Year = line.replace('Year:', '').replace(',', '').trim();
       } else if (line.includes('Degree:')) {
-        currentObject.Degree = line.replace('Degree:', '').replace(',', '').trim();
+        currentObject.Degree = line.replace('Degree:', '').replace(/,$/, '').trim();
       }
     }
     // Parse experiences
@@ -172,10 +183,10 @@ export const parsePortfolioData = (markdownContent) => {
     data.education.push({
       id: data.education.length + 1,
       institution: currentObject.University || '',
-      degree: currentObject.Degree || '',
+      degree: (currentObject.Degree || '').replace(/,$/, ''),
       field: 'Computer Science and Information Engineering',
       period: currentObject.Year || '',
-      description: `${currentObject.Degree} from ${currentObject.University}`
+      description: `${(currentObject.Degree || '').replace(/,$/, '')} from ${currentObject.University}`
     });
   }
   
