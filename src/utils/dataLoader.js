@@ -135,7 +135,7 @@ export const parsePortfolioData = (markdownContent) => {
       } else if (collectingMultiline && line.includes(']')) {
         collectingMultiline = false;
         currentObject.highlights = multilineContent.split(',').map(item => 
-          item.replace('"', '').replace('"', '').trim()
+          item.replace(/"/g, '').trim()
         ).filter(item => item);
       } else if (collectingMultiline) {
         multilineContent += line;
@@ -155,8 +155,8 @@ export const parsePortfolioData = (markdownContent) => {
       } else if (line.includes('description:')) {
         currentObject.description = line.replace('description:', '').replace('"', '').replace('"', '').replace(/,$/, '').trim();
       } else if (line.includes('technologies:')) {
-        const techString = line.replace('technologies:', '').replace('[', '').replace(']', '').replace(',', '').trim();
-        currentObject.technologies = techString.split(',').map(tech => tech.replace('"', '').replace('"', '').trim()).filter(tech => tech);
+        const techString = line.replace('technologies:', '').replace('[', '').replace(']', '').trim();
+        currentObject.technologies = techString.split(',').map(tech => tech.replace(/"/g, '').trim()).filter(tech => tech);
       } else if (line.includes('period:')) {
         currentObject.period = line.replace('period:', '').replace('"', '').replace('"', '').replace(',', '').trim();
       } else if (line.includes('link:')) {
@@ -170,7 +170,7 @@ export const parsePortfolioData = (markdownContent) => {
       } else if (collectingMultiline && line.includes(']')) {
         collectingMultiline = false;
         currentObject.highlights = multilineContent.split(',').map(item => 
-          item.replace('"', '').replace('"', '').trim()
+          item.replace(/"/g, '').trim()
         ).filter(item => item);
       } else if (collectingMultiline) {
         multilineContent += line;
