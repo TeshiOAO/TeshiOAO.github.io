@@ -22,7 +22,15 @@
       "Bash(mv:*)",
       "Bash(gh api:*)",
       "Bash(node:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(npm run deploy:*)",
+      "Bash(gh workflow:*)",
+      "Bash(git remote get-url:*)",
+      "Bash(touch:*)",
+      "Bash(npx gh-pages:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git stash:*)"
     ],
     "deny": []
   }
