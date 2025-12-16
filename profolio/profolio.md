@@ -52,7 +52,8 @@ highlights: [
 title: "Substitute Military Service",
 organization: "National Fire Agency",
 period: "05/2025-11/2025",
-description: "Serving as a substitute military service member at the National Fire Agency, contributing to fire safety and emergency response operations."
+description: "Serving as a substitute military service member at the National Fire Agency, contributing to fire safety and emergency response operations.",
+image: "/profolio/NFA.png"
 },
 ]
 
@@ -62,7 +63,6 @@ title: "Digital Mapping Development of climate change Visualization and Analysis
 description: "Visualization of meteorological and environmental changes, a collaborative project with the Research Center for Environmental Changes, Academia Sinica.",
 technologies: ["Paraview"],
 period: "2022-2023",
-link: "", // Optional
 highlights: [
 "Visualization",
 "Scientific Data"
@@ -73,7 +73,7 @@ title: "Deep Learning-Assisted Statistical Visualization and Analysis for Distri
 description: "Develop a neural network model to map distribution samples to spatial locations, enabling high-quality data analysis, visualization, and uncertainty quantification.",
 technologies: ["Neural Network", "Numpy"],
 period: "2022-2025",
-link: "https://github.com/TeshiOAO/GS-3DNet", // Optional
+link: "https://github.com/TeshiOAO/GS-3DNet"
 highlights: [
 "Scientific Data",
 "Visualization",
