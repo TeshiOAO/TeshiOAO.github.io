@@ -1,4 +1,4 @@
-# Resume Portfolio
+# Resume
 
 A minimalist, high-end, and design-driven personal resume website built with React and Vite. This project embodies clean aesthetics while effectively showcasing personal characteristics and professional experience.
 
@@ -32,7 +32,7 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:5173` to see your resume portfolio.
+Visit `http://localhost:5173` to see your resume.
 
 ## 📁 Project Structure
 
@@ -72,7 +72,7 @@ Modify `src/App.css` to customize:
 
 ## 📱 Responsive Design
 
-The portfolio is fully responsive with optimized layouts for:
+The resume is fully responsive with optimized layouts for:
 - **Desktop** (1024px+)
 - **Tablet** (768px - 1024px)
 - **Mobile** (480px - 768px)
@@ -114,7 +114,7 @@ Run tests with: `npm run test`
 2. **Personal Introduction** - Brief about yourself
 3. **Education** - Academic background
 4. **Special Experiences** - Unique experiences and achievements
-5. **Project Experience** - Portfolio of your work
+5. **Project Experience** - Showcase of your work
 
 ## 🎨 Design Philosophy
 

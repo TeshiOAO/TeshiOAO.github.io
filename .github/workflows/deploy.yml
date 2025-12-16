@@ -1,4 +1,4 @@
-# Deploy React portfolio to GitHub Pages using gh-pages
+# Deploy React resume to GitHub Pages using gh-pages
 name: Deploy to GitHub Pages
 
 on:

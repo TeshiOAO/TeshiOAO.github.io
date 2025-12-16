@@ -1,8 +1,8 @@
-// Utility function to load and parse portfolio data
+// Utility function to load and parse resume data
 import { resumeData as defaultData } from '../data/content.js';
 
 // Parse the markdown-like data from profolio.md
-export const parsePortfolioData = (markdownContent) => {
+export const parseResumeData = (markdownContent) => {
   const lines = markdownContent.split('\n');
   const data = {
     personal: {
@@ -160,7 +160,15 @@ export const parsePortfolioData = (markdownContent) => {
       } else if (line.includes('period:')) {
         currentObject.period = line.replace('period:', '').replace('"', '').replace('"', '').replace(',', '').trim();
       } else if (line.includes('link:')) {
-        const link = line.replace('link:', '').replace('"', '').replace('"', '').replace(',', '').replace('//', '').trim();
+        // Remove "link:" and quotes
+        let linkPart = line.replace('link:', '').replace(/"/g, '').trim();
+        // Remove inline comments (// ...) but preserve URLs with https://
+        if (linkPart.includes('//') && !linkPart.includes('http')) {
+          linkPart = linkPart.split('//')[0];
+        }
+        // Clean up and extract link
+        let link = linkPart.replace(',', '').trim();
+        // Only set link if it's a valid non-empty string
         if (link && link !== 'Optional') {
           currentObject.link = link.startsWith('http') ? link : `https://${link}`;
         }
@@ -207,18 +215,18 @@ export const parsePortfolioData = (markdownContent) => {
   return data;
 };
 
-// Load portfolio data from profolio directory
-export const loadPortfolioData = async () => {
+// Load resume data from profolio directory
+export const loadResumeData = async () => {
   try {
     // In a real application, you would fetch this data
     // For now, we'll use the parsed data directly
     const response = await fetch('/profolio/profolio.md');
     if (response.ok) {
       const content = await response.text();
-      return parsePortfolioData(content);
+      return parseResumeData(content);
     }
   } catch (error) {
-    console.log('Could not load portfolio data, using default data');
+    console.log('Could not load resume data, using default data');
   }
   
   // Fallback to default data structure with profolio photo

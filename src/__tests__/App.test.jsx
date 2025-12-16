@@ -1,41 +1,43 @@
 // Basic tests for App component
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, vi } from 'vitest'
+import { render, screen, waitFor } from '@testing-library/react'
 import App from '../App'
 
-// Mock the content data to ensure tests are predictable
-vi.mock('../data/content', () => ({
-  resumeData: {
+// Mock the data loader to ensure tests are predictable
+vi.mock('../utils/dataLoader', () => ({
+  loadResumeData: vi.fn(() => Promise.resolve({
     personal: {
       name: "Test User",
       title: "Test Title",
       intro: "Test introduction",
       photo: null
     },
+    contact: {
+      email: "test@example.com"
+    },
+    languages: [],
     education: [],
     experiences: [],
     projects: []
-  }
+  }))
 }))
 
 describe('App Component', () => {
-  it('renders the main header', () => {
+  it('renders all main sections', async () => {
     render(<App />)
-    expect(screen.getByText('Resume Portfolio')).toBeInTheDocument()
-    expect(screen.getByText('Minimalist • High-end • Design-driven')).toBeInTheDocument()
-  })
-
-  it('renders all main sections', () => {
-    render(<App />)
-    expect(screen.getByText('About Me')).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText('About Me')).toBeInTheDocument()
+    })
     expect(screen.getByText('Education')).toBeInTheDocument()
     expect(screen.getByText('Special Experiences')).toBeInTheDocument()
     expect(screen.getByText('Project Experience')).toBeInTheDocument()
   })
 
-  it('renders personal information from data', () => {
+  it('renders personal information from data', async () => {
     render(<App />)
-    expect(screen.getByText('Test User')).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText('Test User')).toBeInTheDocument()
+    })
     expect(screen.getByText('Test Title')).toBeInTheDocument()
     expect(screen.getByText('Test introduction')).toBeInTheDocument()
   })

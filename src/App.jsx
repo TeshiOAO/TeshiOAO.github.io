@@ -5,20 +5,20 @@ import LanguagesSection from './components/LanguagesSection'
 import EducationSection from './components/EducationSection'
 import ExperiencesSection from './components/ExperiencesSection'
 import ProjectsSection from './components/ProjectsSection'
-import { loadPortfolioData } from './utils/dataLoader'
+import { loadResumeData } from './utils/dataLoader'
 
 function App() {
-  const [portfolioData, setPortfolioData] = useState(null)
+  const [resumeData, setResumeData] = useState(null)
   const [loading, setLoading] = useState(true)
-  
-  // Load portfolio data on component mount
+
+  // Load resume data on component mount
   useEffect(() => {
     const loadData = async () => {
       try {
-        const data = await loadPortfolioData()
-        setPortfolioData(data)
+        const data = await loadResumeData()
+        setResumeData(data)
       } catch (error) {
-        console.error('Error loading portfolio data:', error)
+        console.error('Error loading resume data:', error)
       } finally {
         setLoading(false)
       }
@@ -30,13 +30,13 @@ function App() {
   if (loading) {
     return (
       <div className="app">
-        <div className="loading">Loading portfolio...</div>
+        <div className="loading">Loading resume...</div>
       </div>
     )
   }
 
-  const personal = portfolioData?.personal
-  const contact = portfolioData?.contact
+  const personal = resumeData?.personal
+  const contact = resumeData?.contact
 
   return (
     <div className="app">
@@ -92,10 +92,10 @@ function App() {
       
       {/* Secondary Sections */}
       <main className="main-content">
-        <LanguagesSection data={portfolioData?.languages} />
-        <EducationSection data={portfolioData?.education} />
-        <ExperiencesSection data={portfolioData?.experiences} />
-        <ProjectsSection data={portfolioData?.projects} />
+        <LanguagesSection data={resumeData?.languages} />
+        <EducationSection data={resumeData?.education} />
+        <ExperiencesSection data={resumeData?.experiences} />
+        <ProjectsSection data={resumeData?.projects} />
       </main>
     </div>
   )

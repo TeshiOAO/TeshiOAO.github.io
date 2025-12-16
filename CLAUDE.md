@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal resume/portfolio project aimed at creating a minimalist, high-end, and design-driven website to showcase personal characteristics and professional experience. 
+This is a personal resume project aimed at creating a minimalist, high-end, and design-driven website to showcase personal characteristics and professional experience. 
 To facilitate maintenance and modification, please create easily editable text sections. Required features for this project include: photo, personal introduction, education, special experiences, and project experience. Simple animations should be used to enhance the browsing experience for readers.
 
 ## Current State
@@ -100,7 +100,7 @@ For manual deployment using the gh-pages package:
 **Important Notes:**
 - The site will be available at `https://[username].github.io/bib/`
 - The `base: '/bib/'` setting in `vite.config.js` ensures proper asset paths
-- Content is loaded from `public/profolio/profolio.md` - update this file to modify portfolio content
+- Content is loaded from `public/profolio/profolio.md` - update this file to modify content
 - The deployment process builds the project and uploads to the `gh-pages` branch
 - GitHub Actions workflow is configured with PERSONAL_ACCESS_TOKEN deployment
 - Production build fixed for proper asset loading and ES module support
