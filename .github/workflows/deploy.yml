@@ -1,4 +1,4 @@
-# Deploy React resume to GitHub Pages using gh-pages
+# Deploy React resume to GitHub Pages
 name: Deploy to GitHub Pages
 
 on:
@@ -12,7 +12,6 @@ permissions:
   contents: write
   pages: write
   id-token: write
-  actions: read
 
 jobs:
   # Build and Deploy job
@@ -23,28 +22,28 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch all history for gh-pages
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
-          
+
       - name: Install dependencies
         run: npm ci --prefer-offline
-        
+
       - name: Build project
         run: npm run build
-        
+
       - name: Configure Git for deployment
         run: |
-          git config --global user.name "github-actions"
+          git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        
+
       - name: Deploy to GitHub Pages
         run: |
-          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           echo "" > dist/.nojekyll
           npx gh-pages -d dist --dotfiles
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
