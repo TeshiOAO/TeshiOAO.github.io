@@ -1,21 +1,33 @@
-// Education section component
+// Education section component with performance optimizations
+import { memo } from 'react'
 import PropTypes from 'prop-types'
-import { resumeData } from '../data/content'
+import { educationShape } from '../types/propTypes'
+import { useLanguage } from '../contexts/LanguageContext'
 
-const EducationSection = ({ data }) => {
-  // Use provided data or fallback to default data
-  const education = data || resumeData.education
+// Optimized with React.memo to prevent unnecessary re-renders
+const EducationSection = memo(({ data }) => {
+  const { content } = useLanguage()
+
+  // Early return if no education data
+  if (!data || data.length === 0) {
+    return null
+  }
+
+  const education = data
+
   return (
     <section className="education-section">
-      <h2>Education</h2>
+      <h2>{content.navigation.education}</h2>
       <div className="education-list">
         {education.map(edu => (
           <div key={edu.id} className="education-item">
             <div className="education-header">
               <h3 className="institution">{edu.institution}</h3>
-              <span className="period">{edu.period}</span>
+              {edu.period && <span className="period">{edu.period}</span>}
             </div>
-            <p className="degree">{edu.degree} in {edu.field}</p>
+            {edu.degree && edu.field && (
+              <p className="degree">{edu.degree} in {edu.field}</p>
+            )}
             {edu.description && (
               <p className="description">{edu.description}</p>
             )}
@@ -24,10 +36,14 @@ const EducationSection = ({ data }) => {
       </div>
     </section>
   )
-}
+})
 
+// Display name for debugging
+EducationSection.displayName = 'EducationSection'
+
+// Improved PropTypes with specific shape validation
 EducationSection.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.arrayOf(educationShape)
 }
 
 export default EducationSection

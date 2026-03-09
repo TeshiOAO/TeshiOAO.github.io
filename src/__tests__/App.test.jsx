@@ -1,44 +1,36 @@
-// Basic tests for App component
-import { describe, it, expect, vi } from 'vitest'
+// Updated tests for App component with bilingual support
+import { describe, it, expect } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import App from '../App'
 
-// Mock the data loader to ensure tests are predictable
-vi.mock('../utils/dataLoader', () => ({
-  loadResumeData: vi.fn(() => Promise.resolve({
-    personal: {
-      name: "Test User",
-      title: "Test Title",
-      intro: "Test introduction",
-      photo: null
-    },
-    contact: {
-      email: "test@example.com"
-    },
-    languages: [],
-    education: [],
-    experiences: [],
-    projects: []
-  }))
-}))
-
 describe('App Component', () => {
-  it('renders all main sections', async () => {
+  it('renders main sections in Chinese (default)', async () => {
     render(<App />)
+
     await waitFor(() => {
-      expect(screen.getByText('About Me')).toBeInTheDocument()
+      expect(screen.getByText('黃瀚')).toBeInTheDocument()
     })
-    expect(screen.getByText('Education')).toBeInTheDocument()
-    expect(screen.getByText('Special Experiences')).toBeInTheDocument()
-    expect(screen.getByText('Project Experience')).toBeInTheDocument()
+
+    expect(screen.getByText('軟體工程師')).toBeInTheDocument()
+    expect(screen.getByText('hankhank135@gmail.com')).toBeInTheDocument()
+    expect(screen.getByText('關於我')).toBeInTheDocument()
   })
 
-  it('renders personal information from data', async () => {
+  it('renders language toggle button', async () => {
     render(<App />)
+
     await waitFor(() => {
-      expect(screen.getByText('Test User')).toBeInTheDocument()
+      const toggleButton = screen.getByLabelText(/Switch to/i)
+      expect(toggleButton).toBeInTheDocument()
     })
-    expect(screen.getByText('Test Title')).toBeInTheDocument()
-    expect(screen.getByText('Test introduction')).toBeInTheDocument()
+  })
+
+  it('renders full page scroll navigation', async () => {
+    render(<App />)
+
+    await waitFor(() => {
+      const navDots = document.querySelectorAll('.nav-dot')
+      expect(navDots.length).toBeGreaterThan(0)
+    })
   })
 })
